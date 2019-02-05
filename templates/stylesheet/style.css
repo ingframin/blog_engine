@@ -1,0 +1,15 @@
+div#layout{
+    margin-top: 80px;
+}
+@media only screen and (max-width: 600px) {
+    div#empty{
+        height:80px;
+        
+    }
+    div#content{
+        margin-top:120px;
+        
+    }
+
+}
+
