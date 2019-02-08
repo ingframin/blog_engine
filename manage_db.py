@@ -59,8 +59,8 @@ def query_by_year(table,year):
 if __name__=='__main__':
 
     setup()
-    # p0 = '0,"My first post","This is the content of my first post","30-10-2018"'
-    # p1 = '1,"My second post","This is the content of my second post","30-10-2018"'
-    # insert('blog_post',[p0,p1])
+    p0 = '0,"My first post","This is the content of my first post","30-10-2018"'
+    p1 = '1,"My second post","This is the content of my second post","30-10-2018"'
+    insert('blog_post',[p0,p1])
     #print(query('admins'))
     # print(query('blog_post'))
