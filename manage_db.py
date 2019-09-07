@@ -9,7 +9,7 @@ def setup():
         for stmt in ct:
             conn.execute(stmt)
     
-    conn.execute("INSERT INTO admins VALUES ('framin', 'Hx125vwZQS§','ir.fminucci@gmail.com')")
+    conn.execute("INSERT INTO admins VALUES ('username', 'password','email@whatever.it')")
     conn.commit()
     conn.close()
 
@@ -48,12 +48,9 @@ def query_by_year(table,year):
 
 if __name__=='__main__':
 
-    #setup()
-    p0 = '0,"My first post","This is the content of my first post","30-10-2018"'
-    p1 = '1,"My second post","This is the content of my second post","30-10-2018"'
-    cnt = '"ingframin","E-mail: <a href=""mailto:ir.fminucci@gmail.com"">ir.fminucci@gmail.com</a><br><a href=""https://www.linkedin.com/in/ingframin/?locale=en_US"">LnkedIn</a> "'
+    setup()
+    #p0 = '0,"My first post","This is the content of my first post","30-10-2018"'
+    #p1 = '1,"My second post","This is the content of my second post","30-10-2018"'
+    #cnt = '"username","E-mail: <a href=""mailto:something@else.it"">something@else.it</a><br><a href=""https://www.linkedin.com"">LnkedIn</a> "'
     #insert('blog_post',[p0,p1])
     #insert('contacts',[cnt])
-    print(query('admins'))
-    print(query('blog_post'))
-    print(contacts('"ingframin"'))
