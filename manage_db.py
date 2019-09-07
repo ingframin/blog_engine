@@ -1,20 +1,3 @@
-'''
-Blog Engine
-Copyright (C) 2019  Franco Minucci
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-'''
 import sqlite3
 
 DB_STRING = './database/blog.db'
@@ -26,7 +9,7 @@ def setup():
         for stmt in ct:
             conn.execute(stmt)
     
-    conn.execute("INSERT INTO admins VALUES ('username', 'password','email@whatever.xxx')")
+    conn.execute("INSERT INTO admins VALUES ('framin', 'Hx125vwZQS§','ir.fminucci@gmail.com')")
     conn.commit()
     conn.close()
 
@@ -48,6 +31,13 @@ def query(table,id = -1):
     conn.close()
     return res
 
+def contacts(username):
+    conn = sqlite3.connect(DB_STRING)
+    c = conn.cursor()
+    c.execute("SELECT content FROM contacts WHERE username="+username)
+    res = c.fetchall()
+    return res[0][0]
+
 def query_by_year(table,year):
     conn = sqlite3.connect(DB_STRING)
     c = conn.cursor()
@@ -58,9 +48,12 @@ def query_by_year(table,year):
 
 if __name__=='__main__':
 
-    setup()
+    #setup()
     p0 = '0,"My first post","This is the content of my first post","30-10-2018"'
     p1 = '1,"My second post","This is the content of my second post","30-10-2018"'
-    insert('blog_post',[p0,p1])
-    #print(query('admins'))
-    # print(query('blog_post'))
+    cnt = '"ingframin","E-mail: <a href=""mailto:ir.fminucci@gmail.com"">ir.fminucci@gmail.com</a><br><a href=""https://www.linkedin.com/in/ingframin/?locale=en_US"">LnkedIn</a> "'
+    #insert('blog_post',[p0,p1])
+    #insert('contacts',[cnt])
+    print(query('admins'))
+    print(query('blog_post'))
+    print(contacts('"ingframin"'))

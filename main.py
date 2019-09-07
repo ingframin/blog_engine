@@ -1,24 +1,7 @@
-'''
-Blog Engine
-Copyright (C) 2019  Franco Minucci
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-'''
 import cherrypy
 import os
 from mako.template import Template
-from manage_db import query,insert,query_by_year
+from manage_db import query,insert,query_by_year,contacts
 from cherrypy.lib import auth_basic
 import time
 
@@ -76,7 +59,9 @@ class Website:
     @cherrypy.expose
     def contact(self):
         contact = Template(filename='./templates/page.html')
-        return contact.render(title="Contact me directly",content='E-mail: <a href="mailto:ir.fminucci@gmail.com">ir.fminucci@gmail.com</a>')
+        cnt = contacts('"ingframin"')
+        
+        return contact.render(title="Contact me directly",content=cnt)
 
     @cherrypy.expose
     def _admin(self, title="", content=""):

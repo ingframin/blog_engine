@@ -18,3 +18,8 @@ create table admins(
     pwd varchar(32),
     email varchar(64)
 );
+
+create table contacts(
+    username varchar(32) primary key,
+    content text
+);
